@@ -1,0 +1,23 @@
+name: Helmfile
+
+on:
+  push: {}
+
+jobs:
+
+  template:
+
+    runs-on: ubuntu-20.04
+
+    container:
+      image: ghcr.io/aservo/helmfile:0.143.0
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Versions
+      run: |
+        helmfile version
+        helm version
