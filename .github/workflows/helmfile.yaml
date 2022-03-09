@@ -1,0 +1,46 @@
+name: Helmfile
+
+on:
+  push:
+
+jobs:
+
+  lint-include-needs:
+
+    runs-on: ubuntu-20.04
+
+    container:
+      image: ghcr.io/helmfile/helmfile:latest
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Version
+      run: helmfile version
+
+    # Expected: Lint releases 2 and 3
+    # Actual:   Lint releases 1, 2, and 3
+    - name: Template Include-Needs
+      run: helmfile lint -l name=release3 --include-needs
+
+  template-include-needs:
+
+    runs-on: ubuntu-20.04
+
+    container:
+      image: ghcr.io/helmfile/helmfile:latest
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Version
+      run: helmfile version
+
+    # Expected: Template releases 2 and 3
+    # Actual:   Template releases 1, 2, and 3
+    - name: Template Include-Needs
+      run: helmfile template -l name=release3 --include-needs

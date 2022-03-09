@@ -1,0 +1,23 @@
+repositories:
+  - name: aservo
+    url: https://aservo.github.io/charts
+
+releases:
+  - chart: aservo/util
+    version: 0.0.1
+    name: release1
+    namespace: default
+
+  - chart: aservo/util
+    version: 0.0.1
+    name: release2
+    namespace: default
+    needs:
+      - release1
+
+  - chart: aservo/util
+    version: 0.0.1
+    name: release3
+    namespace: default
+    needs:
+      - release2
