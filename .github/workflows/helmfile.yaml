@@ -21,3 +21,9 @@ jobs:
       run: |
         helmfile version
         helm version
+
+    - name: Helmfile Template
+      run: helmfile template
+
+    - name: Helmfile Debug Template
+      run: helmfile --debug template

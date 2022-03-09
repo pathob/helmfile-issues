@@ -1,0 +1,18 @@
+repositories:
+  - name: aservo
+    url: https://aservo.github.io/charts
+  - name: gitlab
+    url: https://charts.gitlab.io
+
+releases:
+  - name: gitlab
+    chart: gitlab/gitlab
+    version: 4.12.13
+    values:
+      - certmanager-issuer:
+          email: issuer@localhost
+    ## Does not work:
+    dependencies:
+      - chart: aservo/util
+        version: 0.0.1
+        alias: resources
