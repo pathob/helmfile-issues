@@ -44,3 +44,6 @@ jobs:
 
     - name: Helmfile Template
       run: helmfile template
+
+    - name: Helmfile Template
+      run: helmfile --debug template
