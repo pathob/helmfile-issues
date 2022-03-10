@@ -22,4 +22,4 @@ releases:
       service: release-resources
     <<: *defaults
     needs:
-      - "{{`{{ .Namespace }}`}}-shared-resources"
+      - "{{`{{ .Release.Namespace }}`}}-shared-resources"
